@@ -1,11 +1,14 @@
 package com.materdei.timeclock
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.*
+import com.materdei.timeclock.databinding.ActivityMainBinding
 import com.materdei.timeclock.viewmodels.LocationViewModel
 import com.materdei.timeclock.viewmodels.PermissionHandlerAndroid
 
@@ -19,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var locationViewModel: LocationViewModel
     private val latRef: Double = -1.3566939
     private val lonRef: Double = -48.3934582
+    /*private val latRef: Double = -1.431333
+    private val lonRef: Double = -48.475374*/
+
+    private lateinit var binding: ActivityMainBinding
     /* Coordination
     my house: canPunchCard(-1.3566939,-48.3934582)
     mater dei: canPunchCard(-1.431333,-48.475374)
@@ -27,7 +34,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
         supportActionBar?.hide()
 
@@ -72,10 +80,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         locationViewModel.canRegister.observe(this) {
-            if(it)
-                Toast.makeText(this,"You are near!",Toast.LENGTH_LONG).show()
-            else
-                Toast.makeText(this,"You are away!",Toast.LENGTH_LONG).show()
+            if(it) {
+                binding.btnFingerprint.visibility = View.VISIBLE
+                binding.warningTextView.visibility = View.GONE
+                binding.btnFingerprint.setOnClickListener{
+                    val intent = Intent(this,HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+            else {
+                binding.warningTextView.visibility = View.VISIBLE
+                binding.btnFingerprint.visibility = View.GONE
+            }
         }
     }
 

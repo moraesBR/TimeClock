@@ -14,7 +14,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class PermissionHandlerAndroid : ViewModel(), PermissionsHandler {
-    
+
     private var _hasPermission = MutableLiveData(false)
     val hasPermission: LiveData<Boolean>
         get() = _hasPermission

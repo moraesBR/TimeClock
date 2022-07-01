@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/richard/Dropbox/codes/android/TimeClock/app/src/main/res/drawable/ic_baseline_fingerprint_24.xml" value="0.196" />
         <entry key="..\:/richard/Dropbox/codes/android/TimeClock/app/src/main/res/drawable/ic_mater_dei.xml" value="0.196" />
         <entry key="..\:/richard/Dropbox/codes/android/TimeClock/app/src/main/res/drawable/ic_splash.xml" value="0.1975" />
         <entry key="..\:/richard/Dropbox/codes/android/TimeClock/app/src/main/res/layout/activity_home.xml" value="0.18802083333333333" />
-        <entry key="..\:/richard/Dropbox/codes/android/TimeClock/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/richard/Dropbox/codes/android/TimeClock/app/src/main/res/layout/activity_main.xml" value="0.33" />
       </map>
     </option>
   </component>

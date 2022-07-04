@@ -1,9 +1,7 @@
 package com.materdei.timeclock.view
 
 import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,12 +10,15 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import com.materdei.timeclock.Constants.Companion.LOCATION_PERMISSION_REQUEST_CODE
+import com.materdei.timeclock.Constants.Companion.TOO_DISTANCE
 import com.materdei.timeclock.R
 import com.materdei.timeclock.databinding.FragmentHomeBinding
 import com.materdei.timeclock.viewmodels.LocationPermission
 import com.materdei.timeclock.viewmodels.LocationViewModel
 
-const val LOCATION_PERMISSION_REQUEST_CODE = 2022
+
 
 class HomeFragment : Fragment() {
 
@@ -44,7 +45,13 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        prepRequestLocationUpdate()
+        binding.punchInBtn.setOnClickListener{
+            prepRequestLocationUpdate()
+        }
+
+        binding.punchOutBtn.setOnClickListener{
+            prepRequestLocationUpdate()
+        }
     }
 
     private fun prepRequestLocationUpdate() {
@@ -62,16 +69,18 @@ class HomeFragment : Fragment() {
     private fun requestLocationUpdate() {
         locationViewModel = ViewModelProvider(this).get(LocationViewModel::class.java)
         locationViewModel.getLocationLiveData().observe(viewLifecycleOwner) {
-            Log.i("REQ","ok3")
-            Toast.makeText(
-                context,
-                "Lat ${it.latitude}; Lon ${it.longitude}",
-                Toast.LENGTH_LONG
-            ).show()
+            if(it.isNear())
+                Navigation.findNavController(binding.root).navigate(R.id.action_homeFragment_to_authorizationFragment)
+            else
+                Toast.makeText(
+                    context,
+                    TOO_DISTANCE,
+                    Toast.LENGTH_SHORT
+                ).show()
         }
     }
 
-    @Deprecated("Deprecated in Java")
+    /*@Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -97,5 +106,5 @@ class HomeFragment : Fragment() {
                     .show()
             }
         }
-    }
+    }*/
 }

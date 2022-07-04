@@ -4,4 +4,11 @@
     <string name="logo">logo</string>
     <string name="warning_msg">You are Away from Mater Dei</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_authorization">Registrando Entrada</string>
+    <string name="time_authorization">Fulano de Tal - 8:00 A.M.</string>
+    <string name="msg_authorization">Confirme com sua biometria</string>
+    <string name="punch_out">Punch Out</string>
+    <string name="punch_in">Punch In</string>
+    <string name="biometric_button">biometric button</string>
+    <string name="title_home_fragment">Registro de Pontos</string>
 </resources>

@@ -5,6 +5,7 @@ import android.location.Location
 import android.os.Looper
 import androidx.lifecycle.LiveData
 import com.google.android.gms.location.*
+import com.materdei.timeclock.Constants.Companion.ONE_MINUTE
 import com.materdei.timeclock.dto.LocationDetails
 
 class LocationLiveData(context: Context) : LiveData<LocationDetails>(){
@@ -22,8 +23,6 @@ class LocationLiveData(context: Context) : LiveData<LocationDetails>(){
     }
 
     companion object {
-        private const val ONE_MINUTE: Long = 60000
-
         val locationRequest: LocationRequest = LocationRequest.create().apply {
             priority = Priority.PRIORITY_HIGH_ACCURACY
             interval = ONE_MINUTE

@@ -25,5 +25,23 @@
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true"
             />
+        <action
+            android:id="@+id/action_homeFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="com.materdei.timeclock.view.AuthorizationFragment"
+        android:label="fragment_authorization"
+        tools:layout="@layout/fragment_authorization" >
+        <action
+            android:id="@+id/action_authorizationFragment_to_homeFragment2"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_authorizationFragment_to_mainFragment2"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

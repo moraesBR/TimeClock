@@ -5,7 +5,7 @@ import android.location.Location
 import android.os.Looper
 import androidx.lifecycle.LiveData
 import com.google.android.gms.location.*
-import com.materdei.timeclock.Constants.Companion.ONE_MINUTE
+import com.materdei.timeclock.utils.Constants.Companion.ONE_MINUTE
 import com.materdei.timeclock.dto.LocationDetails
 
 class LocationLiveData(context: Context) : LiveData<LocationDetails>(){

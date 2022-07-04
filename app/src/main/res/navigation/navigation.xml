@@ -35,11 +35,13 @@
         android:label="fragment_authorization"
         tools:layout="@layout/fragment_authorization" >
         <action
-            android:id="@+id/action_authorizationFragment_to_homeFragment2"
+            android:id="@+id/action_authorizationFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment" />
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"
+            />
         <action
-            android:id="@+id/action_authorizationFragment_to_mainFragment2"
+            android:id="@+id/action_authorizationFragment_to_mainFragment"
             app:destination="@id/mainFragment"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />

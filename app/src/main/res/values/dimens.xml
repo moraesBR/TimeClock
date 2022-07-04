@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="warning_msg">18sp</dimen>
+    <dimen name="width_horizontal_button">120dp</dimen>
+    <dimen name="elevation_btn">2dp</dimen>
+    <dimen name="margin_layout">12dp</dimen>
+    <dimen name="title_text">24sp</dimen>
+    <dimen name="title_margin">24dp</dimen>
 </resources>

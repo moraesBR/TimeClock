@@ -37,28 +37,31 @@ android {
 
 dependencies {
 
-    def version_core_ktx = '1.8.0'
     def version_appcompat = '1.4.2'
-    def version_material = '1.6.1'
+    def version_biometric = '1.2.0-alpha04'
+    def version_core_ktx = '1.8.0'
     def version_constraintlayout = '2.1.4'
-    def version_play_services_location = '20.0.0'
-    def version_lifecycle_extensions = '2.2.0'
     def version_databinding = '7.2.1'
+    def version_lifecycle_extensions = '2.2.0'
+    def version_material = '1.6.1'
+    def version_navigation = '2.4.2'
+    def version_play_services_location = '20.0.0'
     def version_play_services_maps = '18.0.2'
     def version_room_coroutines = '2.1.0-alpha04'
-    def version_navigation = '2.4.2'
 
-    implementation "androidx.core:core-ktx:$version_core_ktx"
     implementation "androidx.appcompat:appcompat:$version_appcompat"
-    implementation "com.google.android.material:material:$version_material"
+    implementation "androidx.biometric:biometric:$version_biometric"
     implementation "androidx.constraintlayout:constraintlayout:$version_constraintlayout"
-    implementation "com.google.android.gms:play-services-location:$version_play_services_location"
-    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
-    implementation "com.google.android.gms:play-services-maps:$version_play_services_maps"
+    implementation "androidx.core:core-ktx:$version_core_ktx"
     implementation "androidx.databinding:databinding-runtime:$version_databinding"
-    implementation "androidx.room:room-coroutines:$version_room_coroutines"
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
     implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
+    implementation "androidx.room:room-coroutines:$version_room_coroutines"
+
+    implementation "com.google.android.material:material:$version_material"
+    implementation "com.google.android.gms:play-services-maps:$version_play_services_maps"
+    implementation "com.google.android.gms:play-services-location:$version_play_services_location"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

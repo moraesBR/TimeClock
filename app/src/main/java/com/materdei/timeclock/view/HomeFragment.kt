@@ -11,11 +11,11 @@ import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.materdei.timeclock.Constants.Companion.LOCATION_PERMISSION_REQUEST_CODE
-import com.materdei.timeclock.Constants.Companion.TOO_DISTANCE
+import com.materdei.timeclock.utils.Constants.Companion.LOCATION_PERMISSION_REQUEST_CODE
+import com.materdei.timeclock.utils.Constants.Companion.TOO_DISTANCE
 import com.materdei.timeclock.R
 import com.materdei.timeclock.databinding.FragmentHomeBinding
-import com.materdei.timeclock.viewmodels.LocationPermission
+import com.materdei.timeclock.security.LocationPermission
 import com.materdei.timeclock.viewmodels.LocationViewModel
 
 

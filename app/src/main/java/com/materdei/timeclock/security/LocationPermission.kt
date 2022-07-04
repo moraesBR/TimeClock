@@ -1,4 +1,4 @@
-package com.materdei.timeclock.viewmodels
+package com.materdei.timeclock.security
 
 import android.Manifest
 import android.content.Context

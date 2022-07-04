@@ -1,4 +1,6 @@
-package com.materdei.timeclock
+package com.materdei.timeclock.utils
+
+import java.util.*
 
 class Constants {
     companion object{
@@ -10,5 +12,6 @@ class Constants {
         val LOCATION_PERMISSION_REQUEST_CODE = 2022
         val TOO_DISTANCE = "Too distance from Mater Dei"
         val ONE_MINUTE: Long = 60000
+        val KEY_BIOMETRIC = UUID.randomUUID().toString()
     }
 }

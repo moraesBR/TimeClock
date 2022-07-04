@@ -69,25 +69,71 @@
             android:text="@string/msg_authorization"
             android:fontFamily="@font/playfair_display"
             android:textAlignment="center"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="#1E0AB4"
             android:textSize="18sp"
             app:layout_constraintTop_toBottomOf="@id/timeTextView"
-            app:layout_constraintBottom_toTopOf="@id/fingerprintButton"
+            app:layout_constraintBottom_toTopOf="@id/buttonPanel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/fingerprintButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_fingerprint_btn"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
             app:layout_constraintTop_toBottomOf="@id/msgTextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:contentDescription="@string/biometric_button"
-            />
+            />-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/buttonPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/msgTextView">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/agreeBtn"
+                android:layout_width="@dimen/width_horizontal_button"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/light_green_color"
+                android:elevation="@dimen/elevation_btn"
+                android:fontFamily="@font/playfair_display"
+                android:text="@string/agree_btn"
+                android:textAppearance="?attr/textAppearanceButton"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cancelBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cancelBtn"
+                android:layout_width="@dimen/width_horizontal_button"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/red_color"
+                android:elevation="@dimen/elevation_btn"
+                android:fontFamily="@font/playfair_display"
+                android:text="@string/cancel_btn"
+                android:textAppearance="?attr/textAppearanceButton"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/agreeBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

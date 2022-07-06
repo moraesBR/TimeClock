@@ -10,13 +10,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.materdei.timeclock.R
 import com.materdei.timeclock.databinding.FragmentAuthorizationBinding
-import com.materdei.timeclock.security.BiometricAuthetication
+import com.materdei.timeclock.security.BiometricAuthentication
+import com.materdei.timeclock.utils.Constants.Companion.BIOMETRIC_NEGATIVE_BUTTON
+import com.materdei.timeclock.utils.Constants.Companion.BIOMETRIC_SUBTITLE
+import com.materdei.timeclock.utils.Constants.Companion.BIOMETRIC_TITLE
 import com.materdei.timeclock.viewmodels.DoItViewModel
 
 class AuthorizationFragment : Fragment() {
 
     private lateinit var binding: FragmentAuthorizationBinding
-    private lateinit var biometricAuthetication : BiometricAuthetication
+    private lateinit var biometricAuthetication : BiometricAuthentication
     private lateinit var doIt: DoItViewModel
 
     override fun onCreateView(
@@ -32,13 +35,13 @@ class AuthorizationFragment : Fragment() {
 
         doIt = ViewModelProvider(this).get(DoItViewModel::class.java)
 
-        biometricAuthetication = BiometricAuthetication(this)
+        biometricAuthetication = BiometricAuthentication(this)
 
         binding.agreeBtn.setOnClickListener{
             biometricAuthetication.start(
-                "Biometric login for my app",
-                "Log in using your biometric credential",
-                "Use account password"
+                BIOMETRIC_TITLE,
+                BIOMETRIC_SUBTITLE,
+                BIOMETRIC_NEGATIVE_BUTTON
             )
         }
 

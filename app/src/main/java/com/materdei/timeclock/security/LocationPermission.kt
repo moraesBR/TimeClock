@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.materdei.timeclock.utils.Constants.Companion.LOCATION_REQUIREMENT
 
 class LocationPermission(private val context: Context) {
 
@@ -24,7 +25,7 @@ class LocationPermission(private val context: Context) {
         if(deviceEnabled)
             request(checkPermission)
         else
-            Toast.makeText(context,"Turn on your Internet or/and GPS, please",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,LOCATION_REQUIREMENT,Toast.LENGTH_SHORT).show()
     }
 
 }

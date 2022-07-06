@@ -1,6 +1,6 @@
 package com.materdei.timeclock.dto
 
-data class Register(
+data class PunchCardDetails(
     val workerName: String,
     val punch: String,
     val year: String,

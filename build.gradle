@@ -4,8 +4,10 @@ buildscript {
         google()
     }
     dependencies {
-        def nav_version = "2.4.2"
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+        def version_navigation_safe_args = "2.4.2"
+        def version_google_services = "4.3.13"
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation_safe_args")
+        classpath("com.google.gms:google-services:$version_google_services")
     }
 }
 

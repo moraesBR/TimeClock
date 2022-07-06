@@ -16,7 +16,7 @@
             android:src="@drawable/ic_launcher"
             android:scaleType="center"
             android:alpha="0.2"
-            android:contentDescription="@string/logo"
+            android:contentDescription="@string/app_desc_logo"
             />
 
         <ScrollView
@@ -30,30 +30,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:elevation="@dimen/cardview_default_elevation"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/margin_layout"
                 >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/title_margin"
-                    android:text="@string/title_home_fragment"
+                    android:text="@string/home_title"
                     android:gravity="center"
                     android:textAlignment="center"
                     android:textSize="@dimen/title_text"
                     android:textColor="@color/black"
                     android:fontFamily="@font/oleo_script_swash_caps"
-                    >
-
-                </TextView>
+                    />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/listRecyclerView"
+                    android:id="@+id/registerRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </androidx.recyclerview.widget.RecyclerView>
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
@@ -70,7 +66,7 @@
                 android:id="@+id/punchInBtn"
                 android:layout_width="@dimen/width_horizontal_button"
                 android:layout_height="wrap_content"
-                android:text="@string/punch_in"
+                android:text="@string/home_punch_in"
                 android:textStyle="bold"
                 android:fontFamily="@font/playfair_display"
                 android:textAppearance="?attr/textAppearanceButton"
@@ -87,7 +83,7 @@
                 android:id="@+id/punchOutBtn"
                 android:layout_width="@dimen/width_horizontal_button"
                 android:layout_height="wrap_content"
-                android:text="@string/punch_out"
+                android:text="@string/home_punch_out"
                 android:textStyle="bold"
                 android:fontFamily="@font/playfair_display"
                 android:textAppearance="?attr/textAppearanceButton"

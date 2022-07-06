@@ -7,7 +7,7 @@ import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.materdei.timeclock.utils.Constants.Companion.KEY_BIOMETRIC
+import com.materdei.timeclock.utils.Constants.Companion.BIOMETRIC_KEY
 import com.materdei.timeclock.viewmodels.DoItViewModel
 import java.nio.charset.Charset
 import java.security.KeyStore
@@ -17,7 +17,7 @@ import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 
-class BiometricAuthetication(fragment: Fragment) {
+class BiometricAuthentication(fragment: Fragment) {
 
     private var executor: Executor
     private var biometricPrompt: BiometricPrompt
@@ -37,7 +37,7 @@ class BiometricAuthetication(fragment: Fragment) {
             result: BiometricPrompt.AuthenticationResult) {
             super.onAuthenticationSucceeded(result)
             val encryptedInfo: ByteArray = result.cryptoObject?.cipher?.doFinal(
-                KEY_BIOMETRIC.toByteArray(Charset.defaultCharset()))!!
+                BIOMETRIC_KEY.toByteArray(Charset.defaultCharset()))!!
             Toast.makeText(fragment.requireContext(),
                 "Authentication succeeded!" +
                         Arrays.toString(encryptedInfo), Toast.LENGTH_SHORT)
@@ -70,7 +70,7 @@ class BiometricAuthetication(fragment: Fragment) {
 
         // Before the keystore can be accessed, it must be loaded.
         keyStore.load(null)
-        return keyStore.getKey(KEY_BIOMETRIC, null) as SecretKey
+        return keyStore.getKey(BIOMETRIC_KEY, null) as SecretKey
     }
 
     private fun getCipher(): Cipher {
@@ -81,7 +81,7 @@ class BiometricAuthetication(fragment: Fragment) {
 
     fun start(title:String, subTitle: String, negativeButton: String){
         generateSecretKey(KeyGenParameterSpec.Builder(
-            KEY_BIOMETRIC,
+            BIOMETRIC_KEY,
             KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT)
             .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
             .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)

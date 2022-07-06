@@ -11,8 +11,9 @@ import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.materdei.timeclock.utils.Constants.Companion.LOCATION_PERMISSION_REQUEST_CODE
-import com.materdei.timeclock.utils.Constants.Companion.TOO_DISTANCE
+import com.materdei.timeclock.utils.Constants.Companion.LOCATION_TOO_DISTANCE
 import com.materdei.timeclock.R
 import com.materdei.timeclock.databinding.FragmentHomeBinding
 import com.materdei.timeclock.security.LocationPermission
@@ -37,6 +38,9 @@ class HomeFragment : Fragment() {
             container,
             false
         )
+
+        binding.registerRecyclerView.layoutManager = LinearLayoutManager(this.requireContext())
+
 
         locationPermission = LocationPermission(context!!)
 
@@ -74,37 +78,9 @@ class HomeFragment : Fragment() {
             else
                 Toast.makeText(
                     context,
-                    TOO_DISTANCE,
+                    LOCATION_TOO_DISTANCE,
                     Toast.LENGTH_SHORT
                 ).show()
         }
     }
-
-    /*@Deprecated("Deprecated in Java")
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        Log.i("TESTE","${LOCATION_PERMISSION_REQUEST_CODE}")
-        when (requestCode){
-            LOCATION_PERMISSION_REQUEST_CODE -> {
-                if((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)){
-                    locationPermission.requestLocation {
-                        requestLocationUpdate()
-                    }
-                }
-                else{
-                    Toast.makeText(context,
-                        "Unable to check your location without permission", Toast.LENGTH_LONG)
-                        .show()
-                }
-            }
-            else -> {
-                Toast.makeText(context,
-                    "No permission", Toast.LENGTH_SHORT)
-                    .show()
-            }
-        }
-    }*/
 }

@@ -5,6 +5,14 @@
     tools:context="com.materdei.timeclock.view.MainFragment"
     >
 
+    <data>
+
+        <variable
+            name="user"
+            type="com.materdei.timeclock.dto.User" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,21 +23,21 @@
             android:id="@+id/img_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/app_desc_logo"
             android:scaleType="center"
             android:src="@drawable/splash"
-            android:contentDescription="@string/logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintVertical_bias="0.2" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/app_desc_img_background"
             android:scaleType="fitXY"
             android:src="@drawable/mater_dei"
-            android:contentDescription="@string/image_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -37,30 +45,81 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
 
-        <ImageView
-            android:id="@+id/btn_fingerprint"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/loginLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_fingerprint_24"
+            android:orientation="vertical"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_logo"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            >
 
-        <TextView
-            android:id="@+id/warningTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="@dimen/warning_msg"
-            android:text="@string/warning_msg"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_logo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/loginEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_layout"
+                android:layout_marginBottom="@dimen/margin_layout"
+                android:padding="@dimen/margin_layout"
+                android:background="@color/white"
+                android:hint="@string/main_login"
+                android:inputType="textEmailAddress"
+                android:text="@={user.email}"
+                />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_layout"
+                android:layout_marginBottom="@dimen/margin_layout"
+                android:padding="@dimen/margin_layout"
+                android:background="@color/white"
+                android:hint="@string/main_password"
+                android:inputType="textPassword"
+                android:text="@={user.password}"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/saveLogin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_save_checkbox"
+                    android:textColor="@color/white"
+                    app:layout_constraintHorizontal_weight="4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/loginButton"
+                    />
+
+                <Button
+                    android:id="@+id/loginButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_login"
+                    android:textColor="@color/black"
+                    android:elevation="@dimen/elevation_btn"
+                    android:backgroundTint="@color/light_green_color"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/saveLogin"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

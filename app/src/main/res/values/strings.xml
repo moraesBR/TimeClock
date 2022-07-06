@@ -1,16 +1,30 @@
 <resources>
+    <string name="authorization_time">Fulano de Tal: 2022/07/04 (8:00 A.M.)</string>
+    <string name="authorization_title">Registrando Entrada</string>
+    <string name="authorization_msg">Confirma registro?</string>
+    <string name="authorization_agree_btn">Confirma</string>
+    <string name="authorization_cancel_btn">Cancela</string>
+
     <string name="app_name">Time Clock Mater Dei</string>
-    <string name="image_background">image background</string>
-    <string name="logo">logo</string>
-    <string name="warning_msg">Você está longe do Mater Dei</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_authorization">Registrando Entrada</string>
-    <string name="time_authorization">Fulano de Tal: 2022/07/04 (8:00 A.M.)</string>
-    <string name="msg_authorization">Confirma registro?</string>
-    <string name="punch_out">Saída</string>
-    <string name="punch_in">Entrada</string>
-    <string name="biometric_button">biometric button</string>
-    <string name="title_home_fragment">Registro de Pontos</string>
-    <string name="agree_btn">Confirma</string>
-    <string name="cancel_btn">Cancela</string>
+    <string name="app_desc_img_background">image background</string>
+    <string name="app_desc_logo">logo</string>
+    <string name="app_warning_msg">Você está longe do Mater Dei</string>
+
+    <string name="home_punch_in">Entrada</string>
+    <string name="home_punch_out">Saída</string>
+    <string name="home_title">Registro de Pontos</string>
+
+    <string name="main_desc_img_biometric">biometric button</string>
+    <string name="main_save_checkbox">Lembrar Login</string>
+
+    <string name="punch_data">Data:</string>
+    <string name="punch_image_desc">go work or go home</string>
+    <string name="punch_name">Name:</string>
+    <string name="punch_time">Horário:</string>
+
+    <string name="register_worked_hour">HR:</string>
+    <string name="register_collapsed_info">Collapsed Information</string>
+    <string name="main_login">Login</string>
+    <string name="main_password">Password</string>
+
 </resources>

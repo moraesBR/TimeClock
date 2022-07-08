@@ -10,6 +10,26 @@
         android:background="#F8F6F4"
         >
 
+        <RelativeLayout
+            android:id="@+id/exitPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            >
+
+            <Button
+                android:id="@+id/exitBtn"
+                android:backgroundTint="@color/red_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_logout_btn"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="@dimen/margin_layout"
+                />
+
+        </RelativeLayout>
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/margin_layout"
-            android:layout_above="@id/buttonPanel"
+            android:layout_below="@id/exitPanel"
+            android:layout_above="@id/infoPanel"
             >
 
             <LinearLayout
@@ -55,6 +76,27 @@
 
         </ScrollView>
 
+        <LinearLayout
+            android:id="@+id/infoPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/buttonPanel"
+            >
+
+            <TextView
+                android:id="@+id/infoTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/home_punch_title"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="@dimen/title_text"
+                android:textColor="@color/black"
+                android:fontFamily="@font/oleo_script_swash_caps"
+                />
+
+        </LinearLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/buttonPanel"
             android:layout_width="match_parent"
@@ -62,6 +104,7 @@
             android:layout_margin="@dimen/margin_layout"
             android:layout_alignParentBottom="true"
             >
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/punchInBtn"
                 android:layout_width="@dimen/width_horizontal_button"
@@ -88,7 +131,7 @@
                 android:fontFamily="@font/playfair_display"
                 android:textAppearance="?attr/textAppearanceButton"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/red_color"
+                android:backgroundTint="@color/light_green_color"
                 android:elevation="@dimen/elevation_btn"
                 app:layout_constraintStart_toEndOf="@id/punchInBtn"
                 app:layout_constraintEnd_toEndOf="parent"

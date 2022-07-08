@@ -17,7 +17,8 @@ class Constants {
         val LOCATION_REQUIREMENT = "Turn on your Internet or/and GPS, please"
         val LOCATION_TIME: Long = 60000
         val LOCATION_TOO_DISTANCE = "Too distance from Mater Dei"
-        val LOGIN_MSG = "Please, you must inform email and password correctly!"
+        val LOGIN_ERRO_MSG = "Please, you must inform email and password correctly!"
+        val SHAREDPREFERENCES = "sharedpreferences mater dei"
         val SHAREDPREFERENCES_LOGIN = "LOGIN_DATA"
         val SHAREDPREFERENCES_LOGIN_EMAIL = "email"
         val SHAREDPREFERENCES_LOGIN_PASSWORD = "password"

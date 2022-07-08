@@ -16,6 +16,7 @@ import com.materdei.timeclock.utils.Constants.Companion.LOCATION_PERMISSION_REQU
 import com.materdei.timeclock.utils.Constants.Companion.LOCATION_TOO_DISTANCE
 import com.materdei.timeclock.R
 import com.materdei.timeclock.databinding.FragmentHomeBinding
+import com.materdei.timeclock.security.FirebaseAuthentication
 import com.materdei.timeclock.security.LocationPermission
 import com.materdei.timeclock.viewmodels.LocationViewModel
 
@@ -26,6 +27,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var locationViewModel: LocationViewModel
     private lateinit var locationPermission: LocationPermission
+    private lateinit var firebaseAuthentication: FirebaseAuthentication
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,8 +43,9 @@ class HomeFragment : Fragment() {
 
         binding.registerRecyclerView.layoutManager = LinearLayoutManager(this.requireContext())
 
-
         locationPermission = LocationPermission(context!!)
+        firebaseAuthentication = ViewModelProvider(this)
+            .get(FirebaseAuthentication::class.java)
 
         return binding.root
     }

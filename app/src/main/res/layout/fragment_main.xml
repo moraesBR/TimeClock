@@ -99,6 +99,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/loginButton"
+                    app:layout_constraintHorizontal_bias="0"
                     />
 
                 <Button
@@ -114,6 +115,20 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/saveLogin"
+                    />
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/waitingLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/saveLogin"
+                    android:indeterminate="true"
+                    app:indicatorColor="@color/white"
+                    app:trackThickness="4dp"
+                    android:visibility="gone"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

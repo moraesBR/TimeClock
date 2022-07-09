@@ -18,6 +18,8 @@ class Constants {
         val LOCATION_TIME: Long = 60000
         val LOCATION_TOO_DISTANCE = "Too distance from Mater Dei"
         val LOGIN_ERRO_MSG = "Please, you must inform email and password correctly!"
+        val REGISTERVIEWMODEL_ROOT_COLLECTION = "timeclock"
+        val REGISTERVIEWMODEL_REGISTERS_COLLECTION = "registers"
         val SHAREDPREFERENCES = "sharedpreferences mater dei"
         val SHAREDPREFERENCES_LOGIN = "LOGIN_DATA"
         val SHAREDPREFERENCES_LOGIN_EMAIL = "email"

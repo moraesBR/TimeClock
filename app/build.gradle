@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -45,6 +47,9 @@ dependencies {
     def version_constraintlayout = '2.1.4'
     def version_databinding = '7.2.1'
     def version_firebase_auth = '21.0.6'
+    def version_firebase_bom = '30.1.0'
+    def version_firebase_common = '20.1.1'
+    def version_firestore = '24.2.0'
     def version_lifecycle_extensions = '2.2.0'
     def version_material = '1.6.1'
     def version_navigation = '2.5.0'
@@ -59,6 +64,9 @@ dependencies {
     implementation "androidx.core:core-ktx:$version_core_ktx"
     implementation "androidx.databinding:databinding-runtime:$version_databinding"
     implementation "com.google.firebase:firebase-auth:$version_firebase_auth"
+    implementation platform("com.google.firebase:firebase-bom:$version_firebase_bom")
+    implementation "com.google.firebase:firebase-firestore-ktx:$version_firestore"
+    implementation "com.google.firebase:firebase-common-ktx:$version_firebase_common"
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
     implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"

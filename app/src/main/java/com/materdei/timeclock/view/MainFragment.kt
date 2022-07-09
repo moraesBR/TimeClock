@@ -20,7 +20,6 @@ import com.materdei.timeclock.viewmodels.AppSharedPreferences
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private lateinit var firebaseAuthentication: FirebaseAuthentication
 
 
     override fun onCreateView(
@@ -33,8 +32,6 @@ class MainFragment : Fragment() {
             container,
             false
         )
-
-        firebaseAuthentication = FirebaseAuthentication()
 
         return binding.root
     }
@@ -56,7 +53,7 @@ class MainFragment : Fragment() {
                 it.visibility = View.GONE
                 waitingLogin.visibility = View.VISIBLE
 
-                firebaseAuthentication.handleSignIn(user!!){ isSuccess ->
+                FirebaseAuthentication.handleSignIn(user!!){ isSuccess ->
                     loginButton.visibility = View.VISIBLE
                     waitingLogin.visibility = View.GONE
                     if (isSuccess)
@@ -66,7 +63,7 @@ class MainFragment : Fragment() {
                     }
                     else
                     {
-                        val errorMessage = (firebaseAuthentication.authState as AuthError).msg
+                        val errorMessage = (FirebaseAuthentication.authState as AuthError).msg
                         Toast.makeText(context,errorMessage,Toast.LENGTH_LONG).show()
                     }
                 }

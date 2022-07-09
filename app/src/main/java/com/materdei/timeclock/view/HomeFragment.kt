@@ -2,6 +2,7 @@ package com.materdei.timeclock.view
 
 import android.Manifest
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +17,9 @@ import com.materdei.timeclock.utils.Constants.Companion.LOCATION_PERMISSION_REQU
 import com.materdei.timeclock.utils.Constants.Companion.LOCATION_TOO_DISTANCE
 import com.materdei.timeclock.R
 import com.materdei.timeclock.databinding.FragmentHomeBinding
-import com.materdei.timeclock.security.FirebaseAuthentication
 import com.materdei.timeclock.security.LocationPermission
 import com.materdei.timeclock.viewmodels.LocationViewModel
-
+import com.materdei.timeclock.viewmodels.RegisterViewModel
 
 
 class HomeFragment : Fragment() {
@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var locationViewModel: LocationViewModel
     private lateinit var locationPermission: LocationPermission
-    private lateinit var firebaseAuthentication: FirebaseAuthentication
+    private lateinit var registerViewModel: RegisterViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,28 +43,38 @@ class HomeFragment : Fragment() {
 
         binding.registerRecyclerView.layoutManager = LinearLayoutManager(this.requireContext())
 
+        registerViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
+        registerViewModel.getRegisters()
+
         locationPermission = LocationPermission(context!!)
-        firebaseAuthentication = ViewModelProvider(this)
-            .get(FirebaseAuthentication::class.java)
 
         return binding.root
     }
 
     override fun onResume() {
         super.onResume()
+
+        registerViewModel.newRegisters()
+
+        registerViewModel.dbRegisters.observe(viewLifecycleOwner){
+            it.forEach { newData ->
+                Log.i("FIRESTORE", newData.getKey())
+            }
+        }
+
         binding.punchInBtn.setOnClickListener{
-            prepRequestLocationUpdate()
+            prepRequestLocationUpdate(true)
         }
 
         binding.punchOutBtn.setOnClickListener{
-            prepRequestLocationUpdate()
+            prepRequestLocationUpdate(false)
         }
     }
 
-    private fun prepRequestLocationUpdate() {
+    private fun prepRequestLocationUpdate(isPunchIn: Boolean) {
         locationPermission.requestLocation { isAllowed ->
             if(isAllowed){
-                requestLocationUpdate()
+                requestLocationUpdate(isPunchIn)
             }
             else{
                 val permissionRequest = arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -73,11 +83,16 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun requestLocationUpdate() {
-        locationViewModel = ViewModelProvider(this).get(LocationViewModel::class.java)
+    private fun requestLocationUpdate(isPunchIn: Boolean) {
+        locationViewModel = ViewModelProvider(this)[LocationViewModel::class.java]
         locationViewModel.getLocationLiveData().observe(viewLifecycleOwner) {
             if(it.isNear())
-                Navigation.findNavController(binding.root).navigate(R.id.action_homeFragment_to_authorizationFragment)
+                //Navigation.findNavController(binding.root).navigate(R.id.action_homeFragment_to_authorizationFragment)
+                Navigation.findNavController(binding.root)
+                    .navigate(
+                        HomeFragmentDirections
+                            .actionHomeFragmentToAuthorizationFragment(isPunchIn)
+                    )
             else
                 Toast.makeText(
                     context,

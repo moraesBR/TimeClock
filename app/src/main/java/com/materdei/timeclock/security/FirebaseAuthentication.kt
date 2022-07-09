@@ -1,25 +1,30 @@
 package com.materdei.timeclock.security
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.materdei.timeclock.dto.AuthState
 import com.materdei.timeclock.dto.User
 
-class FirebaseAuthentication: ViewModel() {
+object FirebaseAuthentication {
 
-    private var _authState: AuthState = AuthState.Idle
-    val authState: AuthState
-        get() = _authState
+    var firebaseUser: FirebaseUser? = null
+    var authState: AuthState = AuthState.Idle
 
-     fun handleSignIn(user: User, action: (Boolean) -> Unit){
+    fun handleSignIn(user: User, action: (Boolean) -> Unit){
         if (!isValidEmail(user.email)) {
-            _authState = AuthState.AuthError("Invalid email")
+            authState = AuthState.AuthError("Invalid email")
+            firebaseUser = null
             action(false)
             return
         }
 
         if(user.password.isBlank()) {
-            _authState = AuthState.AuthError("Please, inform your password")
+            authState = AuthState.AuthError("Please, inform your password")
+            firebaseUser = null
             action(false)
             return
         }
@@ -27,12 +32,13 @@ class FirebaseAuthentication: ViewModel() {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(user.email, user.password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    //_userFirebase.value = FirebaseAuth.getInstance().currentUser
-                    _authState = AuthState.Sucess
+                    firebaseUser = FirebaseAuth.getInstance().currentUser
+                    authState = AuthState.Sucess
                     action(true)
                 } else {
                     task.exception?.let {
-                        _authState = AuthState.AuthError(it.localizedMessage)
+                        firebaseUser = null
+                        authState = AuthState.AuthError(it.localizedMessage)
                         action(false)
                     }
                 }

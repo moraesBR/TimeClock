@@ -55,6 +55,7 @@ dependencies {
     def version_navigation = '2.5.0'
     def version_play_services_location = '20.0.0'
     def version_play_services_maps = '18.0.2'
+    def version_recyclerview = '1.2.1'
     def version_room_coroutines = '2.1.0-alpha04'
 
     implementation "androidx.appcompat:appcompat:$version_appcompat"
@@ -70,6 +71,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
     implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
+    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
     implementation "androidx.room:room-coroutines:$version_room_coroutines"
 
     implementation "com.google.android.material:material:$version_material"

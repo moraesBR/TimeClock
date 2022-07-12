@@ -2,7 +2,6 @@ package com.materdei.timeclock.view
 
 import android.Manifest
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.materdei.timeclock.utils.Constants.Companion.LOCATION_PERMISSION_REQUEST_CODE
 import com.materdei.timeclock.utils.Constants.Companion.LOCATION_TOO_DISTANCE
 import com.materdei.timeclock.R
+import com.materdei.timeclock.adpters.RegisterAdapter
 import com.materdei.timeclock.databinding.FragmentHomeBinding
 import com.materdei.timeclock.security.LocationPermission
 import com.materdei.timeclock.viewmodels.LocationViewModel
@@ -28,6 +28,7 @@ class HomeFragment : Fragment() {
     private lateinit var locationViewModel: LocationViewModel
     private lateinit var locationPermission: LocationPermission
     private lateinit var registerViewModel: RegisterViewModel
+    private var parentRegisterAdapter: RegisterAdapter = RegisterAdapter(mutableListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,9 +42,12 @@ class HomeFragment : Fragment() {
             false
         )
 
-        binding.registerRecyclerView.layoutManager = LinearLayoutManager(this.requireContext())
+        binding.registerRecyclerView.layoutManager = LinearLayoutManager(requireContext(),
+            LinearLayoutManager.VERTICAL,false)
+        binding.registerRecyclerView.adapter = parentRegisterAdapter
 
         registerViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
+        locationViewModel = ViewModelProvider(this)[LocationViewModel::class.java]
         registerViewModel.getRegisters()
 
         locationPermission = LocationPermission(context!!)
@@ -57,9 +61,7 @@ class HomeFragment : Fragment() {
         registerViewModel.newRegisters()
 
         registerViewModel.dbRegisters.observe(viewLifecycleOwner){
-            it.forEach { newData ->
-                Log.i("FIRESTORE", newData.getKey())
-            }
+            parentRegisterAdapter.update(it)
         }
 
         binding.punchInBtn.setOnClickListener{
@@ -84,7 +86,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun requestLocationUpdate(isPunchIn: Boolean) {
-        locationViewModel = ViewModelProvider(this)[LocationViewModel::class.java]
         locationViewModel.getLocationLiveData().observe(viewLifecycleOwner) {
             if(it.isNear())
                 //Navigation.findNavController(binding.root).navigate(R.id.action_homeFragment_to_authorizationFragment)

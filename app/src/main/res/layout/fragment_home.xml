@@ -4,31 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#F8F6F4"
         >
-
-        <RelativeLayout
-            android:id="@+id/exitPanel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            >
-
-            <Button
-                android:id="@+id/exitBtn"
-                android:backgroundTint="@color/red_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/home_logout_btn"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_margin="@dimen/margin_layout"
-                />
-
-        </RelativeLayout>
 
         <ImageView
             android:layout_width="match_parent"
@@ -39,48 +19,69 @@
             android:contentDescription="@string/app_desc_logo"
             />
 
-        <ScrollView
+        <!--<ScrollView
             android:id="@+id/listScroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/margin_layout"
-            android:layout_below="@id/exitPanel"
             android:layout_above="@id/infoPanel"
+            android:layout_below="@id/exitPanel"
+            android:layout_marginStart="@dimen/margin_layout"
+            android:layout_marginTop="@dimen/margin_layout"
+            android:layout_marginEnd="@dimen/margin_layout"
+            android:layout_marginBottom="@dimen/margin_layout">-->
+
+        <LinearLayout
+            android:id="@+id/listPanel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_layout"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/infoPanel"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_weight="8"
             >
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/margin_layout"
-                >
+                android:layout_margin="@dimen/title_margin"
+                android:fontFamily="@font/oleo_script_swash_caps"
+                android:gravity="center"
+                android:text="@string/home_title"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title_text" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/title_margin"
-                    android:text="@string/home_title"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/title_text"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/oleo_script_swash_caps"
-                    />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/registerRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    />
 
-            </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
 
-        </ScrollView>
+        </LinearLayout>
+
+        <!--</ScrollView>-->
 
         <LinearLayout
             android:id="@+id/infoPanel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/buttonPanel"
+            app:layout_constraintTop_toBottomOf="@id/listPanel"
+            app:layout_constraintBottom_toTopOf="@id/buttonPanel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_weight="1"
             >
 
             <TextView
@@ -102,7 +103,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_layout"
-            android:layout_alignParentBottom="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/infoPanel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_weight="1"
             >
 
             <androidx.appcompat.widget.AppCompatButton
@@ -140,6 +145,6 @@
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
